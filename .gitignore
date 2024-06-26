@@ -1,0 +1,4 @@
+model_package/model/data/
+model_package/model/images/
+**/__pycache__/
+
