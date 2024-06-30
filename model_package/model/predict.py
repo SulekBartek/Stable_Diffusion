@@ -8,10 +8,10 @@ from PIL import Image
 from pathlib import Path
 from transformers import CLIPTokenizer
 
-from model.clip import CLIP
-from model.sampler import DDPMSampler
-from model.unet_diffusion import Diffusion
-from model.vae import VAE_Encoder, VAE_Decoder
+from sd_model.clip import CLIP
+from sd_model.sampler import DDPMSampler
+from sd_model.unet_diffusion import Diffusion
+from sd_model.vae import VAE_Encoder, VAE_Decoder
 
 from util.load_config import config as cfg
 import util.model_converter as model_converter

@@ -1,20 +1,42 @@
 from pathlib import Path
-from typing import Dict, List, Optional, Sequence
+from typing import  Optional
 
 from pydantic import BaseModel
 from strictyaml import YAML, load
 
-import sd_model
+import model
 
 # Project Directories
-PACKAGE_ROOT = Path(sd_model.__file__).resolve().parent
+PACKAGE_ROOT = Path(model.__file__).resolve().parent
 ROOT = PACKAGE_ROOT.parent
 CONFIG_FILE_PATH = PACKAGE_ROOT / "config/base_config.yml"
 
 class Config(BaseModel):
     """Master config object."""
 
-    demo: str
+    prompt: str
+    uncond_prompt: str
+    image_path: str
+    output_dir: str
+    width: int
+    height: int
+    vocab_file_path: str
+    merges_file_path: str
+    max_length: int
+    package_name: str
+    mode: str
+    device: str
+    idle_device: str
+    ckpt_path: str
+    downsampling_ratio: int
+    num_inference_steps: int
+    num_train_steps: int
+    beta_start: float
+    beta_end: float
+    vae_scale: float
+    do_cfg: bool
+    cfg_scale: int
+    strength: float
 
 def fetch_config_from_yaml(cfg_path: Optional[Path] = None) -> YAML:
     """Parse YAML containing the package configuration."""
