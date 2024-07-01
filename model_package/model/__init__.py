@@ -1,5 +1,4 @@
 import logging
-
 from .util.load_config import PACKAGE_ROOT, config
 
 

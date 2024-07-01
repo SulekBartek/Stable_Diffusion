@@ -56,6 +56,7 @@ def fetch_config_from_yaml(cfg_path: Optional[Path] = None) -> YAML:
 
 def create_and_validate_config(parsed_config: YAML = None) -> Config:
     """Run validation on config values."""
+    
     if parsed_config is None:
         parsed_config = fetch_config_from_yaml()
 

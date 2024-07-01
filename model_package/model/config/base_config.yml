@@ -1,5 +1,5 @@
 DATA:
-  prompt: "A cute corgi dog with a big smile"
+  prompt: "A smiling corgi dog with a red collar"
   uncond_prompt: ""
   image_path: "images/input/corgi.jpg"
   output_dir: "images/output"
