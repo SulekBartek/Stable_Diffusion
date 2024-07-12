@@ -7,12 +7,12 @@ from tqdm import tqdm
 from typing import Tuple
 from transformers import CLIPTokenizer
 
-from sd_model.clip import CLIP
-from sd_model.sampler import DDPMSampler
-from sd_model.unet_diffusion import Diffusion
-from sd_model.vae import VAE_Encoder, VAE_Decoder
-from util.load_config import config as cfg
-import util.model_converter as model_converter
+from sd_model.model.clip import CLIP
+from sd_model.model.sampler import DDPMSampler
+from sd_model.model.unet_diffusion import Diffusion
+from sd_model.model.vae import VAE_Encoder, VAE_Decoder
+from sd_model.util.load_config import config as cfg
+import sd_model.util.model_converter as model_converter
 
 
 def main() -> None:

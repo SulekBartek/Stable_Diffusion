@@ -4,10 +4,10 @@ from typing import  Optional
 from pydantic import BaseModel
 from strictyaml import YAML, load
 
-import model
+import sd_model
 
 # Project Directories
-PACKAGE_ROOT = Path(model.__file__).resolve().parent
+PACKAGE_ROOT = Path(sd_model.__file__).resolve().parent
 ROOT = PACKAGE_ROOT.parent
 CONFIG_FILE_PATH = PACKAGE_ROOT / "config/base_config.yml"
 
@@ -28,6 +28,7 @@ class Config(BaseModel):
     device: str
     idle_device: str
     ckpt_path: str
+    seed: int
     downsampling_ratio: int
     num_inference_steps: int
     num_train_steps: int

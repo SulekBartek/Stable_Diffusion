@@ -1,5 +1,5 @@
 import logging
-from .util.load_config import PACKAGE_ROOT, config
+from sd_model.util.load_config import PACKAGE_ROOT, config
 
 
 

@@ -3,7 +3,7 @@ from torch import nn
 from torch.nn import functional as F
 import math
 
-from util.load_config import config as cfg
+from sd_model.util.load_config import config as cfg
 
 class SelfAttention(nn.Module):
     def __init__(self, n_heads, d_embed, in_proj_bias=True, out_proj_bias=True):
