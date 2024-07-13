@@ -1,0 +1,13 @@
+# DATA
+prompt: "red sports car, (centered), driving, ((angled shot)), full car, wide angle, mountain road"
+uncond_prompt: ""
+image_path: ""
+
+# MODEL
+device: "cpu"
+idle_device: "cpu"
+seed: 3936349264
+num_inference_steps: 10
+do_cfg: True                          # If to use classifier-free guidance
+cfg_scale: 7                          # min: 1, max: 14
+strength: 0.8          # 0-1          # If image_to_image, strength is the weight of the guidance loss

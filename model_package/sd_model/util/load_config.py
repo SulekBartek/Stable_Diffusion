@@ -1,3 +1,4 @@
+import argparse
 from pathlib import Path
 from typing import  Optional
 
@@ -6,10 +7,12 @@ from strictyaml import YAML, load
 
 import sd_model
 
+cfg = None
+
 # Project Directories
 PACKAGE_ROOT = Path(sd_model.__file__).resolve().parent
 ROOT = PACKAGE_ROOT.parent
-CONFIG_FILE_PATH = PACKAGE_ROOT / "config/base_config.yml"
+CONFIG_FILE_PATH = PACKAGE_ROOT / "config/base_config.yaml"
 
 class Config(BaseModel):
     """Master config object."""
@@ -17,27 +20,28 @@ class Config(BaseModel):
     prompt: str
     uncond_prompt: str
     image_path: str
-    output_dir: str
-    width: int
-    height: int
-    vocab_file_path: str
-    merges_file_path: str
-    max_length: int
-    package_name: str
-    mode: str
+    output_dir: Optional[str] = None
+    width: Optional[int] = None
+    height: Optional[int] = None
+    vocab_file_path: Optional[str] = None
+    merges_file_path: Optional[str] = None
+    max_length: Optional[int] = None
+    package_name: Optional[str] = None
+    mode: Optional[str] = None
     device: str
     idle_device: str
-    ckpt_path: str
+    ckpt_path: Optional[str] = None
     seed: int
-    downsampling_ratio: int
+    downsampling_ratio: Optional[int] = None
     num_inference_steps: int
-    num_train_steps: int
-    beta_start: float
-    beta_end: float
-    vae_scale: float
+    num_train_steps: Optional[int] = None
+    beta_start: Optional[float] = None
+    beta_end: Optional[float] = None
+    vae_scale: Optional[float] = None
     do_cfg: bool
     cfg_scale: int
     strength: float
+
 
 def fetch_config_from_yaml(cfg_path: Optional[Path] = None) -> YAML:
     """Parse YAML containing the package configuration."""
@@ -55,11 +59,11 @@ def fetch_config_from_yaml(cfg_path: Optional[Path] = None) -> YAML:
     raise OSError(f"Did not find config file at path: {cfg_path}")
 
 
-def create_and_validate_config(parsed_config: YAML = None) -> Config:
+def create_and_validate_config(parsed_config: YAML = None, cfg_path: str = None) -> Config:
     """Run validation on config values."""
     
     if parsed_config is None:
-        parsed_config = fetch_config_from_yaml()
+        parsed_config = fetch_config_from_yaml(cfg_path)
 
     # specify the data attribute from the strictyaml YAML type.
     _config = Config(**parsed_config.data)
@@ -67,4 +71,16 @@ def create_and_validate_config(parsed_config: YAML = None) -> Config:
     return _config
 
 
-config = create_and_validate_config()
+def get_parser():
+    parser = argparse.ArgumentParser(description='PyTorch Stable Diffusion Model')
+    parser.add_argument('--config', type=str, default='sd_model/config/base_config.yaml', help='config file')
+    parser.add_argument('opts', help='see config directory for all options', default=None, nargs=argparse.REMAINDER)
+    args = parser.parse_args()
+    assert args.config is not None
+
+    cfg = create_and_validate_config(cfg_path=args.config)
+
+    return cfg
+
+
+config = get_parser()

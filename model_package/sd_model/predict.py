@@ -1,6 +1,7 @@
 import datetime
 from PIL import Image
 import numpy as np
+import argparse
 import torch
 from tqdm import tqdm
 
@@ -17,7 +18,7 @@ import sd_model.util.model_converter as model_converter
 
 def main() -> None:
     """
-    Main inference function to generate output image based on the provided configuration.
+    Main inference function to generate output image based on the provided configuration file.
 
     Modes:
     - image_to_image: Generate an image based on a given input image and prompt text.
@@ -80,7 +81,7 @@ def generate(prompt: str,
         do_cfg: Whether to use CFG (Conditional Free Guidance).
         cfg_scale: The scale of CFG.
         n_inference_steps: The number of inference steps.
-        seed: The seed for random number generation.
+        seed: The seed for reproducibility.
         device: The device to run the model on.
         idle_device: An optional device to offload intermediate computations.
 
@@ -89,6 +90,8 @@ def generate(prompt: str,
     """
 
     # Load pretrained weights and store the model modules in a dictionary
+    print("abcdefg", cfg.max_length)
+    print(prompt)
     model_file = cfg.ckpt_path
     models = preload_models_from_standard_weights(model_file, device)
 

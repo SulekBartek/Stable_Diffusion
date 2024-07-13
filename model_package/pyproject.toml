@@ -14,6 +14,8 @@ filterwarnings = [
     "error",
     # distutils is deprecated in 3.10, scheduled for removal in 3.12
     "ignore:The distutils package is deprecated:DeprecationWarning",
+    "ignore:pkg_resources is deprecated:DeprecationWarning",
+    "ignore:Deprecated call to `pkg_resources.declare_namespace.*:DeprecationWarning",
 ]
 
 [tool.black]

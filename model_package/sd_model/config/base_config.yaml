@@ -18,9 +18,9 @@ device: "cuda"
 idle_device: "cpu"
 ckpt_path: "sd_model/data/v1-5-pruned-emaonly.ckpt"
 
-seed: 42
+seed: 43
 downsampling_ratio: 8
-num_inference_steps: 50
+num_inference_steps: 20
 num_train_steps: 1000
 
 beta_start: 0.00085
