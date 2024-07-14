@@ -1,0 +1,31 @@
+# DATA
+prompt: "A smiling corgi dog on the floor with a big red hat on its head."
+uncond_prompt: ""
+image_path: "sd_model/images/input/corgi.jpg"
+output_dir: "sd_model/images/output"
+width: 512
+height: 512
+
+# TOKENIZER
+vocab_file_path: "sd_model/data/vocab.json"
+merges_file_path: "sd_model/data/merges.txt"
+max_length: 77
+
+# MODEL
+package_name: sd_model
+mode: "image_to_image"               # 'image_to_image, 'text_to_image', 'impaint'
+device: "cuda"
+idle_device: "cpu"
+ckpt_path: "sd_model/data/v1-5-pruned-emaonly.ckpt"
+
+seed: 43
+downsampling_ratio: 8
+num_inference_steps: 20
+num_train_steps: 1000
+
+beta_start: 0.00085
+beta_end: 0.0120
+vae_scale: 0.18215
+do_cfg: True                          # If to use classifier-free guidance
+cfg_scale: 8                          # min: 1, max: 14
+strength: 0.8          # 0-1          # If image_to_image, strength is the weight of the guidance loss

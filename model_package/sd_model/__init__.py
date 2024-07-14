@@ -1,8 +1,6 @@
 import logging
 
-from .util.load_config import PACKAGE_ROOT, config
-
-
+from sd_model.util.load_config import PACKAGE_ROOT, config
 
 logging.getLogger(config.package_name).addHandler(logging.NullHandler())
 

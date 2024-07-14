@@ -1,13 +1,13 @@
 include *.txt
 include *.md
 include *.pkl
-recursive-include ./model/*
+recursive-include ./sd_model/*
 
-include model/data/merges.txt
-include model/data/v1-5-pruned-emaonly.ckpt
-include model/data/vocab.json
-include model/VERSION
-include model/config/base_config.yml
+include sd_model/data/merges.txt
+include sd_model/data/v1-5-pruned-emaonly.ckpt
+include sd_model/data/vocab.json
+include sd_model/VERSION
+include sd_model/config/base_config.yaml
 
 include ./requirements/requirements.txt
 include ./requirements/test_requirements.txt

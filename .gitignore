@@ -1,4 +1,9 @@
-model_package/model/data/
-model_package/model/images/
+*/.tox
+*/.pytest_cache
+**/.vscode
+model_package/dist/
+model_package/sd_model.egg-info
+model_package/sd_model/data/
+model_package/sd_model/images/
 **/__pycache__/
 
