@@ -1,10 +1,8 @@
 import pytest
 from PIL import Image
-
 from sd_model.util.load_config import create_and_validate_config
 
 TEST_CFG_PATH = "sd_model/config/test_config.yaml"
-
 
 @pytest.fixture
 def input_text_to_image():
