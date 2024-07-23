@@ -12,7 +12,7 @@ from sd_model.model.clip import CLIP
 from sd_model.model.sampler import DDPMSampler
 from sd_model.model.unet_diffusion import Diffusion
 from sd_model.model.vae import VAE_Decoder, VAE_Encoder
-from sd_model.util.load_config import config as cfg
+from sd_model.util.load_config import config as cfg, PACKAGE_ROOT
 
 
 def main() -> None:
@@ -36,7 +36,7 @@ def main() -> None:
     uncond_prompt = cfg.uncond_prompt
 
     if cfg.mode == "image_to_image":
-        image_path = cfg.image_path
+        image_path = PACKAGE_ROOT / cfg.image_path
         input_image = Image.open(image_path)
 
     elif cfg.mode == "impaint":
@@ -92,9 +92,7 @@ def generate(
     """
 
     # Load pretrained weights and store the model modules in a dictionary
-    print("abcdefg", cfg.max_length)
-    print(prompt)
-    model_file = cfg.ckpt_path
+    model_file = PACKAGE_ROOT / cfg.ckpt_path
     models = preload_models_from_standard_weights(model_file, device)
 
     with torch.no_grad():
@@ -225,7 +223,7 @@ def preload_models_from_standard_weights(ckpt_path: str, device: str) -> dict:
     diffusion = Diffusion().to(device)
     diffusion.load_state_dict(state_dict["diffusion"], strict=True)
 
-    tokenizer = CLIPTokenizer(cfg.vocab_file_path, merges_file=cfg.merges_file_path)
+    tokenizer = CLIPTokenizer((PACKAGE_ROOT / cfg.vocab_file_path), merges_file=(PACKAGE_ROOT / cfg.merges_file_path))
 
     clip = CLIP().to(device)
     clip.load_state_dict(state_dict["clip"], strict=True)

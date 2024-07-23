@@ -78,7 +78,7 @@ def get_parser():
     parser.add_argument(
         "--config",
         type=str,
-        default="sd_model/config/base_config.yaml",
+        default=f"{sd_model.__file__.replace('__init__.py', 'config/base_config.yaml')}",
         help="config file",
     )
     parser.add_argument(

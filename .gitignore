@@ -7,3 +7,5 @@ model_package/sd_model/data/
 model_package/sd_model/images/
 **/__pycache__/
 
+server_api/sd_api/
+
