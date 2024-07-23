@@ -1,19 +1,14 @@
-import math
 from typing import List
-import numpy as np
 from fastapi.testclient import TestClient
+import base64
+from PIL import Image
+from io import BytesIO
 
-
-def test_pass():
-    assert True
-
-
-def test_make_prediction(client: TestClient, test_data: List) -> None:
+def test_make_prediction(client: TestClient, input_text_to_image: List) -> None:
 
     payload = {
-        # ensure pydantic plays well with np.nan
-        "inputs": test_data.replace({np.nan: None}).to_dict(orient="records")
-    }
+        "inputs": input_text_to_image
+        }
 
     response = client.post(
         "http://localhost:8001/api/v1/generate",
@@ -22,4 +17,8 @@ def test_make_prediction(client: TestClient, test_data: List) -> None:
 
     assert response.status_code == 200
     prediction_data = response.json()
-    assert prediction_data["image"] is not None
+    encoded_image = prediction_data["image"]
+    decoded_image = base64.b64decode(encoded_image)
+
+    img = Image.open(BytesIO(decoded_image))
+    assert img.size == (512, 512)

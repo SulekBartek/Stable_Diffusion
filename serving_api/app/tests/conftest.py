@@ -12,20 +12,24 @@ TEST_CFG_PATH = "sd_model/config/test_config.yaml"
 @pytest.fixture(scope="module")
 def input_text_to_image() -> List:
     cfg = create_and_validate_config(cfg_path=TEST_CFG_PATH)
-    input_image = ""
 
     return [
-        cfg.prompt,
-        cfg.uncond_prompt,
-        input_image,
-        cfg.strength,
-        cfg.do_cfg,
-        cfg.cfg_scale,
-        cfg.num_inference_steps,
-        cfg.seed,
-        cfg.device,
-        cfg.idle_device,
-    ]
+                {
+                    "config": {
+                        "mode": "text_to_image",
+                        "prompt": cfg.prompt,
+                        "uncond_prompt": cfg.uncond_prompt,
+                        "image_path": "",
+                        "strength": cfg.strength,
+                        "do_cfg": cfg.do_cfg,
+                        "cfg_scale": cfg.cfg_scale,
+                        "num_inference_steps": cfg.num_inference_steps,
+                        "seed": cfg.seed,
+                        "device": cfg.device,
+                        "idle_device": cfg.idle_device,
+                    }
+                }
+            ]
 
 
 @pytest.fixture()

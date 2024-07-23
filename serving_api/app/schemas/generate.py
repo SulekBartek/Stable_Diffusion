@@ -30,7 +30,7 @@ class GenerationInput(BaseModel):
                             "device": "cpu",
                             "idle_device": "cpu",
                             "seed": 42,
-                            "num_inference_steps": 10,
+                            "num_inference_steps": 2,
                             "do_cfg": True,
                             "cfg_scale": 8,
                             "strength": 0.8,
