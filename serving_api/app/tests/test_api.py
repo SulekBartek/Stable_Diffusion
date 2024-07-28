@@ -1,14 +1,14 @@
-from typing import List
-from fastapi.testclient import TestClient
 import base64
-from PIL import Image
 from io import BytesIO
+from typing import List
+
+from fastapi.testclient import TestClient
+from PIL import Image
+
 
 def test_make_prediction(client: TestClient, input_text_to_image: List) -> None:
 
-    payload = {
-        "inputs": input_text_to_image
-        }
+    payload = {"inputs": input_text_to_image}
 
     response = client.post(
         "http://localhost:8001/api/v1/generate",

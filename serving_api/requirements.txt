@@ -1,4 +1,4 @@
-C:\projects\stable_diffusion\model_package\dist\sd_model-0.1.0-py3-none-any.whl
+https://bs-stable-diffusion-api-bucket.s3.eu-west-1.amazonaws.com/sd_model-0.1.1-py3-none-any.whl
 
 uvicorn>=0.20.0,<0.30.3
 fastapi>=0.88.0,<1.0.0

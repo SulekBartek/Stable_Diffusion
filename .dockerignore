@@ -1,0 +1,10 @@
+*/env*
+*/venv*
+model_package/*
+**/__pycache__/
+*.env
+*.log
+.git
+.gitignore
+.tox
+*/.tox
