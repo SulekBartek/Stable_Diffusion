@@ -4,7 +4,7 @@ pipeline {
         pollSCM('* * * * *')
     }
     environment {
-        WORKING_DIRECTORY = "${env.WORKSPACE}/project"
+        WORKING_DIRECTORY = "${env.WORKSPACE}"
     }
     stages {
         stage('Checkout') {
