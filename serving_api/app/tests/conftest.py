@@ -7,6 +7,7 @@ from sd_model.util.load_config import create_and_validate_config
 from app.main import app
 
 TEST_CFG_PATH = "app/tests/config/test_config.yaml"
+TEST_ENDPOINT = "http://localhost:8001/api/v1/generate"
 
 
 @pytest.fixture(scope="module")
