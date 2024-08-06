@@ -223,7 +223,10 @@ def preload_models_from_standard_weights(ckpt_path: str, device: str) -> dict:
     diffusion = Diffusion().to(device)
     diffusion.load_state_dict(state_dict["diffusion"], strict=True)
 
-    tokenizer = CLIPTokenizer((PACKAGE_ROOT / cfg.vocab_file_path), merges_file=(PACKAGE_ROOT / cfg.merges_file_path))
+    tokenizer = CLIPTokenizer(
+        (PACKAGE_ROOT / cfg.vocab_file_path),
+        merges_file=(PACKAGE_ROOT / cfg.merges_file_path),
+    )
 
     clip = CLIP().to(device)
     clip.load_state_dict(state_dict["clip"], strict=True)

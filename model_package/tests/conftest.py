@@ -54,9 +54,13 @@ def input_image_to_image():
 
 @pytest.fixture
 def input_for_ssim_check(config):
-    sunny_image = np.array(Image.open(IMAGES_FOR_SSIM + '/sunny_mountain.jpg').convert("RGB"))
-    rainy_image = np.array(Image.open(IMAGES_FOR_SSIM + '/rainy_mountain.jpg').convert("RGB"))
-    
+    sunny_image = np.array(
+        Image.open(IMAGES_FOR_SSIM + "/sunny_mountain.jpg").convert("RGB")
+    )
+    rainy_image = np.array(
+        Image.open(IMAGES_FOR_SSIM + "/rainy_mountain.jpg").convert("RGB")
+    )
+
     cfg = config
 
     return sunny_image, rainy_image, cfg
@@ -68,7 +72,7 @@ def real_images():
 
     images = []
     image_files_paths = os.listdir(IMAGES_FOR_FID)
-    
+
     for image_file in image_files_paths:
         image = Image.open(os.path.join(IMAGES_FOR_FID, image_file))
         images.append(np.array(image))

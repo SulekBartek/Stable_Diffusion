@@ -7,7 +7,7 @@ def test_similarity(input_for_ssim_check):
     """Test the similarity between the generated rainy image and the real rainy image."""
 
     sunny_image, real_rainy_image, cfg = input_for_ssim_check
-    
+
     cfg.prompt = "Rainy forest mountains"
     cfg.strength = 0.1  # Low strength for small modification of original image
 

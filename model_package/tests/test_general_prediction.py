@@ -58,5 +58,3 @@ def test_image_resolution(input_image_to_image):
     assert isinstance(output_image, np.ndarray)
     assert output_image.shape == (512, 512, 3)
     assert output_image.dtype == np.uint8
-    
-

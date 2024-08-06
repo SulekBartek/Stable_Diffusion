@@ -47,5 +47,5 @@ import torchvision.transforms as transforms
 #     mse = torch.nn.functional.mse_loss(clean_image_tensor, adversarial_image_tensor).item()
 #     print(f"MSE between clean and adversarial generated images: {mse}")
 
-#     max_mse_threshold = 0.1  
+#     max_mse_threshold = 0.1
 #     assert mse > max_mse_threshold

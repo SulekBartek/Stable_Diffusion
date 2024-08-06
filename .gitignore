@@ -5,6 +5,7 @@ model_package/dist/
 model_package/sd_model.egg-info
 model_package/sd_model/data/
 model_package/sd_model/images/
+model_package/sd_model/finetuning.py
 **/__pycache__/
 
 server_api/sd_api/
